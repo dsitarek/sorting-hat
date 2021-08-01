@@ -47,3 +47,58 @@ hr {
 #errorMessage {
   color: red;
 }
+
+.student-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.first-year-title {
+  flex-basis: 45%;
+  flex-grow: 2;
+  text-align: center;
+  visibility: hidden;
+}
+
+.voldemort-title {
+  flex-basis: 45%;
+  flex-grow: 2;
+  text-align: center;
+  visibility: hidden;
+}
+.good-students {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 45%;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 2;
+  margin: 1em;
+  border: 2px solid lightgray;
+  visibility: hidden;
+}
+
+.bad-students {
+  display: flex;
+  border: 2px solid lightgray;
+  margin: 1em;
+  flex-basis: 45%;
+  flex-grow: 2;
+  visibility: hidden;
+}
+
+.student-card {
+  display: flex;
+  flex-basis: 20%;
+  height: 15em;
+  border: 2px solid lightgray;
+  align-items: center;
+  text-align: center;
+  margin: 1.5em;
+}
+
+.card-subtitle {
+  font-weight: normal;
+}
