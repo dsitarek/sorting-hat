@@ -1,3 +1,5 @@
+arrayOfStudents = [];
+
 const renderToDom = (divId, textToPrint) => {
   const selectedDiv = document.querySelector(divId);
   selectedDiv.innerHTML = textToPrint;
@@ -19,10 +21,42 @@ const resetForm = () => {
   document.getElementById("studentForm").reset();
 };
 
+renderStudents = () => {
+  domString = "";
+  arrayOfStudents.forEach((student) => {
+    domString += `<div class="student-card">
+  <div class="card-body">
+    <h5 class="card-title">${student.name}</h5><br>
+    <h6 class="card-subtitle mb-2">${student.house}</h6>
+  </div>
+</div>`;
+  });
+  document.getElementById("goodStudents").style.visibility = "visible";
+  document.getElementById("badStudents").style.visibility = "visible";
+  document.getElementById("firstYearTitle").style.visibility = "visible";
+  document.getElementById("voldemortTitle").style.visibility = "visible";
+
+  renderToDom("#goodStudents", domString);
+};
+
+const randomHouse = () => {
+  const house = ["Ravenclaw", "Gryffindor", "Hufflepuff", "Slytherin"];
+  return house[Math.floor(Math.random() * house.length)];
+};
+
+const addStudent = (student) => {
+  arrayOfStudents.push({
+    name: student,
+    house: randomHouse(),
+  });
+  renderStudents();
+};
+
 const handleSubmit = () => {
   errorMessage = document.getElementById("errorMessage");
   const studentForm = document.getElementById("inlineFormInputName2");
   if (studentForm.value) {
+    addStudent(studentForm.value);
     resetForm();
     errorMessage.textContent = "";
   } else errorMessage.textContent = "Please enter student name";
