@@ -1,21 +1,17 @@
 .sorting-hat {
-  background-color: gray;
+  background-color: rgb(155, 155, 155);
 }
 
 .card {
   display: flex;
   align-items: center;
-  background-color: lightgray;
-  padding: 1em 0 2em 0;
+  background-color: rgb(231, 231, 231);
+  padding: 2em 0 3em 0;
 }
 
 .sorting-hat-title {
   font-size: 5em;
   font-weight: 300;
-}
-
-.card:nth-child(2) {
-  font-size: 10em;
 }
 
 .btn-sorting-start {
@@ -24,5 +20,30 @@
 
 hr {
   border-top: 1px solid rgb(77, 77, 77);
-  width: 60%;
+  width: 80%;
+}
+
+.student-form {
+  display: flex;
+  flex-direction: column;
+  margin: 3em 1em 3em 1em;
+  align-items: center;
+  border: 2px solid darkgray;
+  padding: 0.25em;
+}
+
+.form-inline {
+  display: flex;
+  width: 50%;
+  margin: 0 1em 1em 1em;
+}
+
+.form-control {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 1em 0 1em;
+}
+
+#errorMessage {
+  color: red;
 }

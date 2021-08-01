@@ -4,15 +4,38 @@ const renderToDom = (divId, textToPrint) => {
 };
 
 const renderSortingHatCard = () => {
-  document.getElementById(
-    "sorting-hat-container"
-  ).innerHTML = `<div class="card">
+  domString = `<div class="card">
       <h1 class="sorting-hat-title">Welcome to Hogwarts!</h5>
       <p class="card-text">This app will allow you to sort the students you enter by house, and expel them if necessary.</p>
       <hr>
       <p class="card-text">Press the button below to start!</p>
-      <a href="#" class="btn btn-primary btn-sorting-start">Let's Start Sorting!</a>
+      <a href="#" class="btn btn-primary btn-sorting-start" onclick="renderStudentForm()">Let's Start Sorting!</a>
     </div>`;
+
+  renderToDom("#sorting-hat-container", domString);
+};
+
+const resetForm = () => {
+  document.getElementById("studentForm").reset();
+};
+
+const handleSubmit = () => {
+  errorMessage = document.getElementById("errorMessage");
+  const studentForm = document.getElementById("inlineFormInputName2");
+  if (studentForm.value) {
+    resetForm();
+    errorMessage.textContent = "";
+  } else errorMessage.textContent = "Please enter student name";
+};
+
+const renderStudentForm = () => {
+  domString = `<div class=student-form><h4>Enter First Year's Name</h4><div id = "errorMessage"></div><form class="form-inline mx-auto" id="studentForm">
+  <label class="sr-only" for="inlineFormInputName2">Student:</label>
+  <input required type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Albus Percival Wulfric Brian Dumbledore">
+  <button type="button" class="btn btn-primary mb-2" onclick="handleSubmit()">Submit</button>
+</form></div>`;
+
+  renderToDom("#studentFormContainer", domString);
 };
 
 const initialize = () => {
