@@ -22,21 +22,41 @@ const resetForm = () => {
 };
 
 renderStudents = () => {
-  domString = "";
-  arrayOfStudents.forEach((student) => {
-    domString += `<div class="student-card">
-  <div class="card-body">
-    <h5 class="card-title">${student.name}</h5><br>
-    <h6 class="card-subtitle mb-2">${student.house}</h6>
-  </div>
-</div>`;
-  });
   document.getElementById("goodStudents").style.visibility = "visible";
   document.getElementById("badStudents").style.visibility = "visible";
   document.getElementById("firstYearTitle").style.visibility = "visible";
   document.getElementById("voldemortTitle").style.visibility = "visible";
+  studentDomString = "";
+  voldemortDomString = "";
 
-  renderToDom("#goodStudents", domString);
+  arrayOfStudents.forEach((student, index) => {
+    if (student.house === "expelled") {
+      document.getElementById("goodStudents").innerHTML = "";
+      studentDomString += `<div class="death-eater-card">
+      <img src="img/deathEaters.jpg" class="card-img-top" alt="Death Eaters">
+      <div class="card-body">
+        <h5 class="card-title">${student.name}</h5>
+        <p class="card-text">Sadly, ${student.name} went over to the dark side!</p>
+      </div>
+    </div>`;
+    } else {
+      document.getElementById("badStudents").innerHTML = "";
+      voldemortDomString += `<div class="student-card">
+      <div class="card-body">
+        <h5 class="card-title">${student.name}</h5><br>
+        <h6 class="card-subtitle mb-2">${student.house}</h6>
+        <button type="button" class="btn btn-danger" onclick="expelStudent(${index})">Expel!</button>
+        </div>
+      </div>`;
+    }
+  });
+  renderToDom("#goodStudents", voldemortDomString);
+  renderToDom("#badStudents", studentDomString);
+};
+
+const expelStudent = (index) => {
+  arrayOfStudents[index].house = "expelled";
+  renderStudents();
 };
 
 const randomHouse = () => {
