@@ -34,18 +34,17 @@ renderStudents = () => {
       document.getElementById("goodStudents").innerHTML = "";
       studentDomString += `<div class="death-eater-card">
       <img src="img/deathEaters.jpg" class="card-img-top" alt="Death Eaters">
-      <div class="card-body">
         <h5 class="card-title">${student.name}</h5>
         <p class="card-text">Sadly, ${student.name} went over to the dark side!</p>
-      </div>
     </div>`;
     } else {
       document.getElementById("badStudents").innerHTML = "";
       voldemortDomString += `<div class="student-card">
-      <div class="card-body">
-        <h5 class="card-title">${student.name}</h5><br>
-        <h6 class="card-subtitle mb-2">${student.house}</h6>
-        <button type="button" class="btn btn-danger" onclick="expelStudent(${index})">Expel!</button>
+        <div class="house-color ${student.house}"></div>
+        <div class="card-body">
+          <h5 class="card-title">${student.name}</h5><br>
+          <h6 class="card-subtitle mb-2">${student.house}</h6>
+          <button type="button" class="btn btn-danger" onclick="expelStudent(${index})">Expel!</button>
         </div>
       </div>`;
     }
@@ -69,6 +68,7 @@ const addStudent = (student) => {
     name: student,
     house: randomHouse(),
   });
+  arrayOfStudents.sort((a, b) => (a.house > b.house ? 1 : -1));
   renderStudents();
 };
 

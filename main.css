@@ -98,9 +98,37 @@ hr {
   flex-basis: 30%;
   height: 26.5em;
   border: 2px solid lightgray;
-  align-items: center;
+  align-items: space-evenly;
+  justify-content: center;
   text-align: center;
-  margin: 1.5em;
+}
+
+.card-body {
+  display: flex;
+  margin-top: 45%;
+  flex-direction: column;
+  align-content: space-evenly;
+}
+
+.house-color {
+  min-height: 2em;
+  min-width: 10%;
+}
+
+.Ravenclaw {
+  background-color: blue;
+}
+
+.Gryffindor {
+  background-color: red;
+}
+
+.Hufflepuff {
+  background-color: gold;
+}
+
+.Slytherin {
+  background-color: green;
 }
 
 .card-subtitle {
