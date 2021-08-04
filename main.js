@@ -32,30 +32,119 @@ renderStudents = () => {
   arrayOfStudents.forEach((student, index) => {
     if (student.house === "expelled") {
       document.getElementById("goodStudents").innerHTML = "";
-      studentDomString += `<div class="death-eater-card">
+      voldemortDomString += `<div class="death-eater-card">
       <img src="img/deathEaters.jpg" class="card-img-top" alt="Death Eaters">
         <h5 class="card-title">${student.name}</h5>
         <p class="card-text">Sadly, ${student.name} went over to the dark side!</p>
+        <button type="button" class="btn btn-primary" id="${index}" onclick="updateStudent(${index})">Update</button>
+        <div class="updateForm update-voldemort">
+        <div class="update-container" id="updateContainer-${index}">
+          <form>
+            <div class="mb-3 update-input">
+              <label for="updateName" class="form-label">Student Name</label>
+              <input
+                type="text"
+                class="form-control name-input"
+                id="updateName-${index}"
+              />
+            </div>
+            <select class="form-select" id="houseDropdown-${index}">
+              <option selected>Select a House</option>
+              <option value="Gryffindor">Gryffindor</option>
+              <option value="Ravenclaw">Ravenclaw</option>
+              <option value="Hufflepuff">Hufflepuff</option>
+              <option value="Slytherin">Slytherin</option>
+              <option value="expelled">EXPELLED!</option>
+            </select>
+            <button type="button" class="btn btn-primary" onclick="pushStudentUpdate(${index})">
+              Submit
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              id="updateCancelButton-${index}"
+              onclick="updateCancelButton(${index})"
+            >
+              Cancel
+            </button>
+          </form>
+        </div>
+      </div>
     </div>`;
     } else {
       document.getElementById("badStudents").innerHTML = "";
-      voldemortDomString += `<div class="student-card">
+      studentDomString += `<div class="student-card">
         <div class="house-color ${student.house}"></div>
         <div class="card-body">
           <h5 class="card-title">${student.name}</h5><br>
           <h6 class="card-subtitle mb-2">${student.house}</h6>
           <button type="button" class="btn btn-danger" onclick="expelStudent(${index})">Expel!</button>
+          <button type="button" class="btn btn-primary" id="${index}" onclick="updateStudent(${index})">Update</button>
+        <div class="updateForm update-student">
+        <div class="update-container" id="updateContainer-${index}">
+          <form>
+            <div class="mb-3 update-input">
+              <label for="updateName" class="form-label">Student Name</label>
+              <input
+                type="text"
+                class="form-control name-input"
+                id="updateName-${index}"
+              />
+            </div>
+            <select class="form-select" id="houseDropdown-${index}">
+              <option selected>Select a House</option>
+              <option value="Gryffindor">Gryffindor</option>
+              <option value="Ravenclaw">Ravenclaw</option>
+              <option value="Hufflepuff">Hufflepuff</option>
+              <option value="Slytherin">Slytherin</option>
+              <option value="expelled">EXPELLED!</option>
+            </select>
+            <button type="button" class="btn btn-primary" onclick="pushStudentUpdate(${index})">
+              Submit
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              id="updateCancelButton-${index}"
+              onclick="updateCancelButton(${index})"
+            >
+              Cancel
+            </button>
+          </form>
         </div>
+        </div>
+      </div>
       </div>`;
     }
   });
-  renderToDom("#goodStudents", voldemortDomString);
-  renderToDom("#badStudents", studentDomString);
+  renderToDom("#goodStudents", studentDomString);
+  renderToDom("#badStudents", voldemortDomString);
 };
 
 const expelStudent = (index) => {
   arrayOfStudents[index].house = "expelled";
   renderStudents();
+};
+
+const updateCancelButton = (index) => {
+  document.getElementById(`updateContainer-${index}`).style.visibility =
+    "hidden";
+};
+
+const pushStudentUpdate = (index) => {
+  arrayOfStudents[index].name = document.getElementById(
+    `updateName-${index}`
+  ).value;
+  arrayOfStudents[index].house = document.getElementById(
+    `houseDropdown-${index}`
+  ).value;
+  arrayOfStudents.sort((a, b) => (a.house > b.house ? 1 : -1));
+  renderStudents();
+};
+
+const updateStudent = (index) => {
+  document.getElementById(`updateContainer-${index}`).style.visibility =
+    "visible";
 };
 
 const randomHouse = () => {
@@ -97,3 +186,6 @@ const initialize = () => {
 };
 
 initialize();
+document.querySelector("body").addEventListener("click", (event) => {
+  console.log(event.target.id);
+});
