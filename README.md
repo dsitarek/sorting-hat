@@ -1,35 +1,39 @@
 # Sorting Hat
 
 ## Goals
+
 The goal of this project is to test your knowledge and to have a FUN time stretching yourself on your FIRST independent application that will become a part of your portfolio.
 
 Focus on MVP. Do not spend a ton of time styling initially. Hit functionality first and then spend time on the styling of the project using bootstrap.
 
 - READ THROUGH ALL OF THE INFORMATION BELOW before planning how you will tackle the project.
-- Check the Issue Tickets to organize your process. You will have all week in class to work on this in class. 
+- Check the Issue Tickets to organize your process. You will have all week in class to work on this in class.
 - PLEASE submit questions along with a link to an issue/discussion ticket to the entire instructional team if you need help. We will guide you to the resources that are available to you.
 - On Saturday, everyone will present how far they got AND their favorite piece of code that they wrote for everyone to share in the Glory!
 - MOST OF ALL HAVE FUN!!!!!
 
 ## Instructions
-You are in charge of bringing the Hogwarts sorting hat to life! 
+
+You are in charge of bringing the Hogwarts sorting hat to life!
 
 This is what the finished app should have:
+
 - To start off with, you will use a [bootstrap card](https://getbootstrap.com/docs/5.0/components/card/#header-and-footer) to have your sorting hat introduce itself and start the sorting process (by clicking on a button). The form should not be on the DOM until the button click happens.
 
-- A [bootstrap form](https://getbootstrap.com/docs/5.0/forms/overview/) will then appear to fill in the student's name and a button to sort. This should then assign the student to a random house (Gryffindor, Hufflepuff, Ravenclaw, or Slytherin). 
+- A [bootstrap form](https://getbootstrap.com/docs/5.0/forms/overview/) will then appear to fill in the student's name and a button to sort. This should then assign the student to a random house (Gryffindor, Hufflepuff, Ravenclaw, or Slytherin).
 
-- On sorting a student, the form should clear and a [bootstrap card](https://getbootstrap.com/docs/5.0/components/card/) with the student's name and a random house assignment should print below the form. 
+- On sorting a student, the form should clear and a [bootstrap card](https://getbootstrap.com/docs/5.0/components/card/) with the student's name and a random house assignment should print below the form.
 
 - You should also be able to expel a student after they have been sorted, which should remove their card from the student array and move them to Moldy Voldy's Army.
 
-In the end, your app will look something like: 
+In the end, your app will look something like:
 
 ![Sorting Hat Wireframe](https://user-images.githubusercontent.com/29741570/127729524-c6a96f34-0ee7-442e-99c0-016ab48f31db.png)
 
 [See Demo](https://drt-sortinghat.netlify.app/)
 
 ## Technical Requirements
+
 - You MUST plan your project and create issue tickets and a project board fro your project
 - You MAY use the `renderToDom()` function that we worked on in class, but you also need to be able to explain it if you use it
 - You have to create a data structure for your project. Review all the elements that need to be on the DOM and create the structure accordingly
@@ -44,9 +48,12 @@ In the end, your app will look something like:
 - Add filter buttons to filter the non-expelled students by house
 
 ## Expel Button Hints
-Think of a way you can expel students without just hiding those divs on the page. This would mean when the button is clicked you modify the array of students and pass the new array into your `renderToDom()` function.  Double hint - put a unique id in the student object when you create them.
+
+Think of a way you can expel students without just hiding those divs on the page. This would mean when the button is clicked you modify the array of students and pass the new array into your `renderToDom()` function. Double hint - put a unique id in the student object when you create them.
 
 ## Optional Bonus
-- House Colors: The color of the student's card changes depending on which house they were sorted. 
+
+- House Colors: The color of the student's card changes depending on which house they were sorted.
 - Card Ordering: Sort the student cards by some criteria (i.e. alphabetically by name, by house)
 
+netlify: https://djs-sortinghat.netlify.app/
