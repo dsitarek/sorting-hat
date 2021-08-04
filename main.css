@@ -146,15 +146,14 @@ h5 {
 }
 
 .update-form {
-  display: fixed;
+  display: sticky;
 }
 .update-container {
-  display: flex;
+  display: sticky;
   visibility: hidden;
   flex-direction: column;
   align-items: space-evenly;
   justify-content: center;
-  position: fixed;
   min-width: 70%;
   min-height: 11em;
   background-color: rgba(134, 134, 134, 0.7);
@@ -164,11 +163,11 @@ h5 {
 }
 
 .update-voldemort {
-  margin: 0.5em 0 0 -370%;
+  margin: -100% 0 0 -370%;
 }
 
 .update-student {
-  margin: 0 0 0 -65%;
+  margin: -200% 0 0 -235%;
 }
 
 .name-input {
@@ -268,6 +267,6 @@ img {
   }
 
   .update-voldemort {
-    margin: 8% 0 0 -100%;
+    margin: -50% 0 0 -100%;
   }
 }
