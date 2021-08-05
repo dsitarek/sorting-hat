@@ -17,11 +17,24 @@ const renderSortingHatCard = () => {
   renderToDom("#sorting-hat-container", domString);
 };
 
+const filterHouse = () => {
+  const selectedHouse = document.getElementById("filterDropdown").value;
+  if (selectedHouse === "All") {
+    renderStudents(arrayOfStudents);
+  } else {
+    const filteredHouseArray = arrayOfStudents.filter(
+      (student) =>
+        student.house === selectedHouse || student.house === "expelled"
+    );
+    renderStudents(filteredHouseArray);
+  }
+};
+
 const resetForm = () => {
   document.getElementById("studentForm").reset();
 };
 
-renderStudents = () => {
+renderStudents = (arr) => {
   document.getElementById("goodStudents").style.visibility = "visible";
   document.getElementById("badStudents").style.visibility = "visible";
   document.getElementById("firstYearTitle").style.visibility = "visible";
@@ -29,33 +42,98 @@ renderStudents = () => {
   studentDomString = "";
   voldemortDomString = "";
 
-  arrayOfStudents.forEach((student, index) => {
-    if (student.house === "expelled") {
-      document.getElementById("goodStudents").innerHTML = "";
-      studentDomString += `<div class="death-eater-card">
+  arr.forEach((student, index) => {
+    if (student.house === "Expelled!") {
+      document.getElementById("badStudents").innerHTML = "";
+      voldemortDomString += `<div class="death-eater-card">
       <img src="img/deathEaters.jpg" class="card-img-top" alt="Death Eaters">
         <h5 class="card-title">${student.name}</h5>
         <p class="card-text">Sadly, ${student.name} went over to the dark side!</p>
+        <button type="button" class="btn btn-primary" id="deathEater-${index}" onclick="updateStudent(${index},'${student.name}','${student.house}')">Update</button>
     </div>`;
     } else {
-      document.getElementById("badStudents").innerHTML = "";
-      voldemortDomString += `<div class="student-card">
+      document.getElementById("goodStudents").innerHTML = "";
+      studentDomString += `<div class="student-card">
         <div class="house-color ${student.house}"></div>
         <div class="card-body">
           <h5 class="card-title">${student.name}</h5><br>
           <h6 class="card-subtitle mb-2">${student.house}</h6>
           <button type="button" class="btn btn-danger" onclick="expelStudent(${index})">Expel!</button>
-        </div>
+          <button type="button" class="btn btn-primary" id="student-${index}" onclick="updateStudent(${index},'${student.name}','${student.house}')">Update</button>
+      </div>
       </div>`;
     }
   });
-  renderToDom("#goodStudents", voldemortDomString);
-  renderToDom("#badStudents", studentDomString);
+  renderToDom("#goodStudents", studentDomString);
+  renderToDom("#badStudents", voldemortDomString);
 };
 
 const expelStudent = (index) => {
-  arrayOfStudents[index].house = "expelled";
-  renderStudents();
+  arrayOfStudents[index].house = "Expelled!";
+  filterHouse();
+};
+
+const updateCancelButton = (index) => {
+  document.getElementById("updateDiv").innerHTML = "";
+};
+
+const pushStudentUpdate = (index) => {
+  arrayOfStudents[index].name = document.getElementById(
+    `updateName-${index}`
+  ).value;
+  arrayOfStudents[index].house = document.getElementById(
+    `houseDropdown-${index}`
+  ).value;
+  arrayOfStudents.sort((a, b) => (a.house > b.house ? 1 : -1));
+  filterHouse();
+  document.getElementById("updateDiv").innerHTML = "";
+};
+
+const updateStudent = (index, name, houseOfStudent) => {
+  const houseArray = [
+    "Ravenclaw",
+    "Gryffindor",
+    "Hufflepuff",
+    "Slytherin",
+    "Expelled!",
+  ];
+  const notMyHouses = houseArray.filter((house) => house != houseOfStudent);
+  domString = `<div class="updateForm update-student">
+        <div class="update-container" id="updateContainer-${index}">
+          <form>
+            <div class="mb-3 update-input">
+              <label for="updateName" class="form-label">Student Name</label>
+              <input
+                type="text"
+value="${name}"
+                class="form-control name-input"
+                id="updateName-${index}"
+              />
+            </div>
+<label for="houseDropdown" class="form-label">Student House</label>
+            <select class="form-select" id="houseDropdown-${index}">
+<option selected >${houseOfStudent}</option>
+              <option value="${notMyHouses[0]}">${notMyHouses[0]}</option>
+              <option value="${notMyHouses[1]}">${notMyHouses[1]}</option>
+              <option value="${notMyHouses[2]}">${notMyHouses[2]}</option>
+              <option value="${notMyHouses[3]}">${notMyHouses[3]}</option>
+            </select>
+            <button type="button" class="btn btn-primary" onclick="pushStudentUpdate(${index})">
+              Submit
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              id="updateCancelButton-${index}"
+              onclick="updateCancelButton(${index})"
+            >
+              Cancel
+            </button>
+          </form>
+        </div>
+        </div>`;
+
+  renderToDom("#updateDiv", domString);
 };
 
 const randomHouse = () => {
@@ -69,7 +147,7 @@ const addStudent = (student) => {
     house: randomHouse(),
   });
   arrayOfStudents.sort((a, b) => (a.house > b.house ? 1 : -1));
-  renderStudents();
+  filterHouse();
 };
 
 const handleSubmit = () => {
@@ -97,3 +175,6 @@ const initialize = () => {
 };
 
 initialize();
+document.querySelector("body").addEventListener("click", (event) => {
+  console.log(event.target.id);
+});
