@@ -16,9 +16,21 @@
   <body>
     <div class="sorting-hat" id="sorting-hat-container"></div>
     <div id="studentFormContainer"></div>
+    <div class="update-div" id="updateDiv"></div>
     <div class="student-container" id="studentContainer">
       <div class="first-year-title" id="firstYearTitle">
         <h2>First Year Students</h2>
+        <select
+          class="form-select filter-dropdown"
+          id="filterDropdown"
+          onchange="filterHouse()"
+        >
+          <option selected>All</option>
+          <option value="Gryffindor">Gryffindor</option>
+          <option value="Ravenclaw">Ravenclaw</option>
+          <option value="Hufflepuff">Hufflepuff</option>
+          <option value="Slytherin">Slytherin</option>
+        </select>
       </div>
       <div class="voldemort-title" id="voldemortTitle">
         <h2>He Who Must Not Be Named's Army</h2>

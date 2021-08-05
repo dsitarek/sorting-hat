@@ -23,6 +23,13 @@ hr {
   width: 80%;
 }
 
+.update-div {
+  display: flex;
+  flex-direction: column;
+  margin: 3em 1em 3em 1em;
+  align-items: center;
+}
+
 .student-form {
   display: flex;
   flex-direction: column;
@@ -56,7 +63,14 @@ hr {
   justify-content: center;
 }
 
+.filter-dropdown {
+  max-width: 20%;
+  align-self: center;
+}
+
 .first-year-title {
+  display: flex;
+  flex-direction: column;
   flex-basis: 45%;
   flex-grow: 2;
   text-align: center;
@@ -123,18 +137,26 @@ hr {
 
 .Ravenclaw {
   background-color: blue;
+  border: 1px solid blue;
+  border-radius: 5px 0 0 5px;
 }
 
 .Gryffindor {
   background-color: red;
+  border: 1px solid red;
+  border-radius: 5px 0 0 5px;
 }
 
 .Hufflepuff {
   background-color: gold;
+  border: 1px solid gold;
+  border-radius: 5px 0 0 5px;
 }
 
 .Slytherin {
   background-color: green;
+  border: 1px solid green;
+  border-radius: 5px 0 0 5px;
 }
 
 .card-subtitle {
@@ -145,12 +167,8 @@ h5 {
   word-break: break-word;
 }
 
-.update-form {
-  display: sticky;
-}
 .update-container {
-  display: sticky;
-  visibility: hidden;
+  display: flex;
   flex-direction: column;
   align-items: space-evenly;
   justify-content: center;
@@ -160,14 +178,6 @@ h5 {
   border: 2px rgba(134, 134, 134, 0.7);
   border-radius: 5px;
   padding: 0.5em 5em 0.5em 5em;
-}
-
-.update-voldemort {
-  margin: -100% 0 0 -370%;
-}
-
-.update-student {
-  margin: -200% 0 0 -235%;
 }
 
 .name-input {
@@ -227,6 +237,10 @@ img {
     flex-direction: column;
   }
 
+  .filter-dropdown {
+    max-width: 80%;
+  }
+
   .good-students {
     flex-direction: column;
     max-width: 45%;
@@ -262,11 +276,10 @@ img {
   }
 
   .update-form {
-    display: sticky;
     width: auto;
   }
 
   .update-voldemort {
-    margin: -50% 0 0 -100%;
+    margin: 8% 0 0 -100%;
   }
 }
