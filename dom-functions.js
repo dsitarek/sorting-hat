@@ -15,7 +15,7 @@ const filterHouse = () => {
   } else {
     const filteredHouseArray = arrayOfStudents.filter(
       (student) =>
-        student.house === selectedHouse || student.house === "expelled"
+        student.house === selectedHouse || student.house === "Expelled!"
     );
     renderStudents(filteredHouseArray);
   }

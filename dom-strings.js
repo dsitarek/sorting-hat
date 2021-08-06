@@ -14,10 +14,11 @@ const renderSortingHatCard = () => {
 
 const voldemortDomStringTemplate = (student, index) => {
   const domString = `<div class="death-eater-card">
-  <img src="img/deathEaters.jpg" class="card-img-top" alt="Death Eaters">
+  <img src="img/voldemort.png" class="card-img-top" alt="Death Eaters">
     <h5 class="card-title">${student.name}</h5>
     <p class="card-text">Sadly, ${student.name} went over to the dark side!</p>
-    <button type="button" class="btn btn-primary" id="deathEater-${index}" onclick="updateStudent(${index},'${student.name}','${student.house}')">Update</button>
+    <button type="button" class="btn" id="deathEater-${index}" onclick="updateStudent(${index},'${student.name}','${student.house}')">Update</button>
+    <button type="button" class="btn delete-btn" id="delete-${index}">Delete</button>
 </div>`;
   return domString;
 };
@@ -26,11 +27,12 @@ const studentDomStringTemplate = (student, index) => {
   const domString = `<div class="student-card">
   <div class="house-color ${student.house}"></div>
   <div class="card-body">
+    <img src="img/hogwarts.png" class="card-img-top" alt="Hogwarts">
     <h5 class="card-title">${student.name}</h5><br>
     <h6 class="card-subtitle mb-2">${student.house}</h6>
-    <button type="button" class="btn btn-primary" id="student-${index}" onclick="updateStudent(${index},'${student.name}','${student.house}')">Update</button>
-    <button type="button" class="btn btn-danger" onclick="expelStudent(${index})">Expel!</button>
-    <button type="button" class="btn btn-danger delete-btn" id="delete-${index}">Delete</button>
+    <button type="button" class="btn" id="student-${index}" onclick="updateStudent(${index},'${student.name}','${student.house}')">Update</button>
+    <button type="button" class="btn" onclick="expelStudent(${index})">Expel!</button>
+    <button type="button" class="btn delete-btn" id="delete-${index}">Delete</button>
 </div>
 </div>`;
   return domString;
@@ -79,7 +81,7 @@ const renderStudentForm = () => {
   const domString = `<div class=student-form><h4>Enter First Year's Name</h4><div id = "errorMessage"></div><form class="form-inline mx-auto" id="studentForm">
   <label class="sr-only" for="inlineFormInputName2">Student:</label>
   <input required type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Albus Percival Wulfric Brian Dumbledore">
-  <button type="button" class="btn btn-primary mb-2" onclick="handleSubmit()">Submit</button>
+  <button type="button" class="btn" onclick="handleSubmit()">Submit</button>
 </form></div>`;
 
   renderToDom("#studentFormContainer", domString);
