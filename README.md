@@ -24,4 +24,4 @@ _Filter by house_
 
 ### [Project board](https://github.com/dsitarek/sorting-hat/projects/1)
 
-### Link to Loom:
+### [Link to Loom](https://www.loom.com/share/d1202d277d134abdbd63a1c2c1f98e44)
