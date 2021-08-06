@@ -1,11 +1,12 @@
-@import url("http://fonts.cdnfonts.com/css/harry-potter");
+@import url("https://fonts.cdnfonts.com/css/harry-potter");
+@import url("https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap");
 
 body {
   background-image: url(img/greathall2.png);
   background-position: top center;
   color: white;
   text-shadow: 1px 1px 2px black, 2px 2px 3px gold;
-  font-family: "Harry Potter";
+  font-family: "Harry Potter", "Yusei Magic", helvetica, arial, sans-serif;
 }
 
 .card {
