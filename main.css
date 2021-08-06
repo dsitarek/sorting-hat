@@ -1,12 +1,34 @@
-.sorting-hat {
-  background-color: rgb(155, 155, 155);
+@import url("http://fonts.cdnfonts.com/css/harry-potter");
+
+body {
+  background-image: url(img/greathall2.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  color: white;
 }
 
 .card {
   display: flex;
   align-items: center;
-  background-color: rgb(231, 231, 231);
+  background-color: rgba(19, 19, 19, 0.075);
   padding: 2em 0 3em 0;
+  font-family: "Harry Potter", sans-serif;
+  color: goldenrod;
+  text-shadow: 1px 1px 3px white, 2px 2px 6px black;
+}
+
+.card p {
+  text-shadow: 1px 1px 1px black;
+  font-size: 1.2em;
+}
+
+.btn-sorting-start {
+  background-image: url(img/sortinghatbutton.png);
+  background-size: 5em;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-width: 5em;
+  min-height: 5em;
 }
 
 .sorting-hat-title {
@@ -133,6 +155,10 @@ hr {
 .house-color {
   min-height: 2em;
   min-width: 10%;
+}
+
+.card-body .btn {
+  margin: 1em 0 0 0;
 }
 
 .Ravenclaw {
@@ -281,5 +307,10 @@ img {
 
   .update-voldemort {
     margin: 8% 0 0 -100%;
+  }
+
+  .delete-btn {
+    margin-left: 35%;
+    font-size: 1em;
   }
 }
