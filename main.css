@@ -136,6 +136,7 @@ hr {
 
 .bad-students {
   display: flex;
+  flex-wrap: wrap;
   background-color: rgba(19, 19, 19, 0.3);
   justify-content: center;
   border: 2px solid rgba(0, 0, 0, 0.2);
