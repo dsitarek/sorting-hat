@@ -18,6 +18,8 @@ _Update student name and house_
 
 _Filter by house_
 
+_Delete Student_
+
 ### Contributors: [Daniel Sitarek](https://github.com/dsitarek)
 
 ### Link to project: https://djs-sortinghat.netlify.app/
@@ -25,3 +27,5 @@ _Filter by house_
 ### [Project board](https://github.com/dsitarek/sorting-hat/projects/1)
 
 ### [Link to Loom](https://www.loom.com/share/d1202d277d134abdbd63a1c2c1f98e44)
+
+![ScreenShot](https://github.com/dsitarek/sorting-hat/blob/a5579c17a4678aba2f0d1db307a6b8ad1cb351b9/img/sortingappScreenShot.png)
