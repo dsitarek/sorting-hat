@@ -2,6 +2,7 @@ import {
   renderSortingHatCard,
   voldemortDomStringTemplate,
   studentDomStringTemplate,
+  renderStudentForm,
 } from "./dom-strings.js";
 
 import { arrayOfStudents, houseArray } from "./data.js";
@@ -88,10 +89,19 @@ const deleteStudent = (eventId) => {
   filterHouse();
 };
 
-const deleteBtnListener = () => {
+const deletebtnListener = () => {
   document
     .getElementById("studentContainer")
     .addEventListener("click", (event) => deleteStudent(event.target.id));
+};
+
+const enterBtnListener = (btnId, inputId) => {
+  document.getElementById(inputId).addEventListener("keyup", (event) => {
+    event.preventDefault();
+    if (event.key === "Enter") {
+      document.getElementById(btnId).click();
+    }
+  });
 };
 
 const handleSubmit = () => {
@@ -106,7 +116,7 @@ const handleSubmit = () => {
 
 const initialize = () => {
   renderSortingHatCard();
-  deleteBtnListener();
+  deletebtnListener();
 };
 
 window.handleSubmit = handleSubmit;
@@ -121,4 +131,5 @@ export {
   pushStudentUpdate,
   handleSubmit,
   initialize,
+  enterBtnListener,
 };
