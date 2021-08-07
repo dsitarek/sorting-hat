@@ -1,4 +1,4 @@
-# Sorting Hat
+# Sorting Hat [![Netlify Status](https://api.netlify.com/api/v1/badges/bb98bde8-d4b3-4dfb-9ccf-f098f40ae39d/deploy-status)](https://app.netlify.com/sites/djs-sortinghat/deploys)
 
 ### Overview:
 
