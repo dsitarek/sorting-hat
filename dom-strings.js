@@ -1,9 +1,10 @@
 import { renderToDom } from "./render-to-dom.js";
 import { arrayOfStudents, houseArray } from "./data.js";
+import { enterBtnListener } from "./dom-functions.js";
 
 const renderSortingHatCard = () => {
   const domString = `<div class="card">
-      <h1 class="sorting-hat-title">Welcome to Hogwarts!</h5>
+      <h1 class="sorting-hat-title shimmer">Welcome to Hogwarts!</h5>
       <p class="card-text">This app will allow you to sort the students you enter by house, and expel them if necessary.</p>
       <hr>
       <p class="card-text">Click the Sorting Hat below to start!</p>
@@ -60,7 +61,7 @@ const updateStudent = (index, name, houseOfStudent) => {
               <option value="${notMyHouses[2]}">${notMyHouses[2]}</option>
               <option value="${notMyHouses[3]}">${notMyHouses[3]}</option>
             </select>
-            <button type="button" class="btn btn-primary" onclick="pushStudentUpdate(${index})">
+            <button type="button" class="btn btn-primary" id="updateBtn-${index}"onclick="pushStudentUpdate(${index})">
               Submit
             </button>
             <button
@@ -75,16 +76,18 @@ const updateStudent = (index, name, houseOfStudent) => {
         </div>
         </div>`;
   renderToDom("#updateDiv", domString);
+  enterBtnListener(`updateBtn-${index}, updateName-${index}`);
 };
 
 const renderStudentForm = () => {
   const domString = `<div class=student-form><h4>Enter First Year's Name</h4><div id = "errorMessage"></div><form class="form-inline mx-auto" id="studentForm">
   <label class="sr-only" for="inlineFormInputName2">Student:</label>
   <input required type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Albus Percival Wulfric Brian Dumbledore">
-  <button type="button" class="btn" onclick="handleSubmit()">Submit</button>
+  <button type="button" class="btn" id="submitBtn" onclick="handleSubmit()">Submit</button>
 </form></div>`;
 
   renderToDom("#studentFormContainer", domString);
+  enterBtnListener("submitBtn", "inlineFormInputName2");
 };
 
 window.renderStudentForm = renderStudentForm;
